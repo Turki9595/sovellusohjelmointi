@@ -1,0 +1,14 @@
+{% extends "bgc/base.html" %}
+{% block content %}
+
+    <p>Boardgames</p>
+
+<ul>
+    {% for b_game in b_games %}
+        <li>{{b_game}}</li>
+    {% empty %}
+        <li> No games have been added yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
