@@ -1,0 +1,13 @@
+{% extends 'bgc/base.html' %}
+{% block content %}
+
+<p><a href="{% url 'bgc:b_game' b_game.id %}">{{ b_game }}</a></p>
+
+<p> Add a new review:</p>
+<form action = "{% url 'bgc:new_review' b_game.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name = 'submit'> Add review</button>
+</form>
+
+{% endblock content %}

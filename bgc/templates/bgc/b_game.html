@@ -4,12 +4,15 @@
  <p>Board game:{{b_game}}</p>
 
   <p>Reviews:</p>
+  <p>
+    <a href="{% url 'bgc:new_review' b_game.id %}"> Add new review</a>
+  </p>
 
  <ul>
  {% for review in reviews %}
    <li>
     <p>{{ review.date_added|date:'M d, Y H:i' }}</p>
-    <p>{{ review.text|linebreaks }}</p>
+    <p>{{ review.text|linebreaks }} Rated {{review.stars}}/5 &#9733; </p>
    </li>
  {% empty %}
    <li> There are no reviews for this game yet.</li>
