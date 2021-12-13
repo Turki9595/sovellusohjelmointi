@@ -12,4 +12,6 @@ urlpatterns = [
     path('b_games/<int:b_game_id>/', views.b_game, name='b_game'),
     #page for adding a new board game
     path('new_b_game/', views.new_b_game, name = 'new_b_game'),
+    #page for adding new review
+    path('new_review/<int:b_game_id>/',views.new_review, name='new_review')
 ]

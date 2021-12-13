@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from bgc.forms import B_gameForm
+from bgc.forms import B_gameForm,ReviewForm
 from .models import B_game,Review
 # Create your views here.
 def index(request):
@@ -21,7 +21,7 @@ def b_game(request, b_game_id):
     return render(request, 'bgc/b_game.html', context)
 
 def new_b_game(request):
-    #add a new book
+    #add a new b_game
     if request.method != 'POST':
         #No data submitted; create a blank form.
         form = B_gameForm()
@@ -34,3 +34,24 @@ def new_b_game(request):
     #Display a blank or invalid form.
     context = {'form':form}
     return render(request, 'bgc/new_b_game.html',context)
+
+
+def new_review(request, b_game_id):
+    #add a new review for a particular b_game
+
+    b_game = B_game.objects.get(id=b_game_id)
+
+    if request.method != 'POST':
+        #No data submitted; create a blank form.
+        form = ReviewForm()
+    else:
+        # POST data submitted; process data.
+        form = ReviewForm(data=request.POST)
+        if form.is_valid():
+            new_review = form.save(commit=False)
+            new_review.b_game = b_game
+            new_review.save()
+            return redirect('bgc:b_game', b_game_id = b_game_id)
+    #Display a blank or invalid form.
+    context = {'b_game': b_game, 'form': form}
+    return render(request, 'bgc/new_review.html',context)
