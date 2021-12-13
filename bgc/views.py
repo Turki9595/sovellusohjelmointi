@@ -55,3 +55,19 @@ def new_review(request, b_game_id):
     #Display a blank or invalid form.
     context = {'b_game': b_game, 'form': form}
     return render(request, 'bgc/new_review.html',context)
+
+def edit_review(request, review_id):
+    #Edit an existing review.
+    review = Review.objects.get(id=review_id)
+    b_game = review.b_game
+    if request.method != 'POST':
+        #Initial request; pre-fill form with the current entry.
+        form = ReviewForm(instance = review)
+    else:
+        #POST data submitted ; process data.
+        form = ReviewForm(instance = review, data = request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('bgc:b_game', b_game_id = b_game.id)
+    context = {'review': review, 'b_game': b_game, 'form':form}
+    return render(request, 'bgc/edit_review.html', context)
