@@ -13,6 +13,9 @@
    <li>
     <p>{{ review.date_added|date:'M d, Y H:i' }}</p>
     <p>{{ review.text|linebreaks }} Rated {{review.stars}}/5 &#9733; </p>
+    <p>
+      <a href="{% url 'bgc:edit_review' review.id %}"> Edit review</a>
+    </p>
    </li>
  {% empty %}
    <li> There are no reviews for this game yet.</li>
