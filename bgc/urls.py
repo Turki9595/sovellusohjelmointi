@@ -10,4 +10,6 @@ urlpatterns = [
     path('b_games/', views.b_games, name='b_games'),
     #Detail page for a single game
     path('b_games/<int:b_game_id>/', views.b_game, name='b_game'),
+    #page for adding a new board game
+    path('new_b_game/', views.new_b_game, name = 'new_b_game'),
 ]
