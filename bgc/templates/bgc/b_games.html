@@ -6,7 +6,7 @@
     <ul>
         {% for b_game in b_games %}
             <li>
-                <a href="{% url 'bgc:b_game' b_game_id %}">{{ b_game }}</a>
+                <a href="{% url 'bgc:b_game' b_game.id %}">{{ b_game }}</a>
             </li>
         {% empty %}
             <li> No games have been added yet.</li>
