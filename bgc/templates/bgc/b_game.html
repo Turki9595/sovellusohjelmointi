@@ -1,0 +1,18 @@
+{% extends 'bgc/base.html' %}
+{% block content %}
+
+ <p>Board game:{{b_game}}</p>
+
+  <p>Reviews:</p>
+
+ <ul>
+ {% for review in reviews %}
+   <li>
+    <p>{{ review.date_added|date:'M d, Y H:i' }}</p>
+    <p>{{ review.text|linebreaks }}</p>
+   </li>
+ {% empty %}
+   <li> There are no reviews for this game yet.</li>
+  {% endfor %}
+ </ul>
+{% endblock content %}
