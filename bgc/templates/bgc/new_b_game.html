@@ -1,0 +1,11 @@
+{% extends 'bgc/base.html' %}
+
+{% block content %}
+    <p> Add a new game:</p>
+    <form action="{% url 'bgc:new_b_game' %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name = "submit"> Add game</button>
+    </form>
+
+{% endblock content %} 
