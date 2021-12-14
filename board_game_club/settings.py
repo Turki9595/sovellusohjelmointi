@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     #My apps
     'bgc',
     'users',
+    #third party apps.
+    'bootstrap4',
     #Django apps
     'django.contrib.admin',
     'django.contrib.auth',

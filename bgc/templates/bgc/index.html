@@ -1,5 +1,12 @@
 {% extends "bgc/base.html" %}
-{% block content %}
-<p>Board game Club</p>
-<p>Club is designed to share your board games with others and be able to reserve other games for yourself.</p>
-{% endblock content %}
+
+{% block page_header %}
+  <div class="jumbotron">
+    <h1 class="display-3">Share your Boardgames!</h1>
+
+    <p class="lead">The board games club is designed to share your board games with others and be able to reserve other games for yourself. </p>
+
+    <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+        role="button">Register &raquo;</a>
+  </div>
+{% endblock page_header %}

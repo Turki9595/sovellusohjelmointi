@@ -1,24 +1,30 @@
 {% extends 'bgc/base.html' %}
+
+
+{% block page_header %}
+  <h3>{{ b_games }}</h3>
+{% endblock page_header %}
+
 {% block content %}
-
- <p>Board game:{{b_game}}</p>
-
-  <p>Reviews:</p>
   <p>
-    <a href="{% url 'bgc:new_review' b_game.id %}"> Add new review</a>
+    <a href="{% url 'bgc:new_review' b_game.id %}">Add new review</a>
   </p>
 
- <ul>
- {% for review in reviews %}
-   <li>
-    <p>{{ review.date_added|date:'M d, Y H:i' }}</p>
-    <p>{{ review.text|linebreaks }} Rated {{review.stars}}/5 &#9733; </p>
-    <p>
-      <a href="{% url 'bgc:edit_review' review.id %}"> Edit review</a>
-    </p>
-   </li>
- {% empty %}
-   <li> There are no reviews for this game yet.</li>
+  <ul>
+  {% for review in reviews %}
+    <div class="card mb-3">
+      <h4 class="card-header">
+        {{ review.date_added|date:'M d, Y H:i' }}
+        <small><a href="{% url 'bgc:edit_review' review.id %}">
+            edit review</a></small>
+      </h4>
+      <div class="card-body">
+        {{ review.text|linebreaks }} {{review.stars}}/5 &#9733;
+        
+      </div>
+    </div>
+  {% empty %}
+    <p>There are no reviews for this b_game yet.</p>
   {% endfor %}
- </ul>
+
 {% endblock content %}
