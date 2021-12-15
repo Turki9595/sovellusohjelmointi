@@ -84,3 +84,4 @@ def edit_review(request, review_id):
             return redirect('bgc:b_game', b_game_id = b_game.id)
     context = {'review': review, 'b_game': b_game, 'form':form}
     return render(request, 'bgc/edit_review.html', context)
+

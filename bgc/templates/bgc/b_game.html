@@ -9,22 +9,31 @@
   <p>
     <a href="{% url 'bgc:new_review' b_game.id %}">Add new review</a>
   </p>
+  <div class="card mb-3">
+    <h3>
+    {{b_game.name}}
+    </h3>
+    <h4>
+    Game description
+    </h4>
+    {{b_game.description}}
 
+  <div class="card-body">
   <ul>
   {% for review in reviews %}
-    <div class="card mb-3">
-      <h4 class="card-header">
-        {{ review.date_added|date:'M d, Y H:i' }}
-        <small><a href="{% url 'bgc:edit_review' review.id %}">
-            edit review</a></small>
-      </h4>
-      <div class="card-body">
+  <div class="card mb-3">
+    <h4 class="card-header">
+      {{ review.date_added|date:'M d, Y H:i' }}
+      <small><a href="{% url 'bgc:edit_review' review.id %}">
+        edit review</a></small>
+    </h4>
+  <div class="card-body">
         {{ review.text|linebreaks }} {{review.stars}}/5 &#9733;
         
       </div>
     </div>
   {% empty %}
-    <p>There are no reviews for this b_game yet.</p>
+    <p>There are no reviews for this board game yet.</p>
   {% endfor %}
 
 {% endblock content %}
