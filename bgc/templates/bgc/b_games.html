@@ -5,9 +5,14 @@
 
     <ul>
         {% for b_game in b_games %}
-            <li>
-                <a href="{% url 'bgc:b_game' b_game.id %}">{{ b_game }}</a>
-            </li>
+        <div class="card mb-3">
+            <h4 class="card-header">
+
+            <a href="{% url 'bgc:b_game' b_game.id %}">{{ b_game }}</a>
+            Game Added: {{ b_game.date_added|date:'M d, Y H:i' }}
+            
+            </h4>
+        </div class="card-body">
         {% empty %}
             <li> No games have been added yet.</li>
         {% endfor %}
