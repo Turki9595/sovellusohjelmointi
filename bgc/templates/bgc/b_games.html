@@ -1,7 +1,7 @@
 {% extends "bgc/base.html" %}
 {% block content %}
 
-    <p>Boardgames</p>
+    <h4>Boardgames</h4>
 
     <ul>
         {% for b_game in b_games %}
@@ -10,7 +10,7 @@
 
             <a href="{% url 'bgc:b_game' b_game.id %}">{{ b_game }}</a>
             Game Added: {{ b_game.date_added|date:'M d, Y H:i' }}
-            
+
             </h4>
         </div class="card-body">
         {% empty %}
