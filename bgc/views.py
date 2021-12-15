@@ -9,7 +9,7 @@ def index(request):
     #homepage
     return render(request, 'bgc/index.html')
 
-@login_required
+
 def b_games(request):
     #show all boardgames
     b_games = B_game.objects.filter(owner=request.user).order_by('date_added')
@@ -17,13 +17,11 @@ def b_games(request):
     context = {'b_games': b_games}
     return render(request, 'bgc/b_games.html', context)
 
-@login_required
+
 def b_game(request, b_game_id):
     #show single game and all its reviews
     b_game = B_game.objects.get(id=b_game_id)
     # make sure the game belongs to the current user.
-    if b_game.owner != request.user:
-        raise Http404
     reviews = b_game.review_set.order_by('-date_added')
     context = {'b_game': b_game, 'reviews':  reviews}
     return render(request, 'bgc/b_game.html', context)
